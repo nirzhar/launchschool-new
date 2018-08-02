@@ -210,7 +210,7 @@ def digit_product(str_num)
   digits = str_num.chars.map { |n| n.to_i }
   product = 0 # change to product = 1
 
-  digits.each do |digit|
+  digits.each do |digit| 
     product *= digit
   end
 
