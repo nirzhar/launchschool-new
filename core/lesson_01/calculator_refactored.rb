@@ -1,39 +1,46 @@
 # calculator.rb
 
+LANGUAGE = 'en'
+
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
+# ( cmd + / to comment out multi-lines. )
 # ask the user for two numbers
 # ask the user for an operation to perform
 # perform the operation on the two numbers
-# out put the result
+# output the result
 
-# answer = Kernel.gets()
-# Kernel.puts(answer)
 
 # create a method for prompting the user, so it is clear for the user/reader.
 
-def prompt(message)
-  puts("=> #{message}")
+ def prompt(message)
+   puts("=> #{message}")
+ end
+
+
+def float?(input)
+  /\d/.match(input) && /^\d*\.?\d*$/.match(input)
 end
 
-def valid_number(num)
-  num.to_i() != 0
-end
 
 def operation_confirmation(op)
-  case op
-  when '1'
-    "Adding" # because the case statment is the last expression in this method,
-    # it will automatically return one of the strings, so we don't
-    # have to write, return "Adding"
-  when '2'
-    "Subtracting"
-  when '3'
-    "Multiplying"
-  when '4'
-    "Dividiing"
-  end
+  word = case op
+        when '1'
+          "Adding" # because the case statment is the last expression in this method,
+          # it will automatically return one of the strings, so we don't
+          # have to write, return "Adding"
+        when '2'
+          "Subtracting"
+        when '3'
+          "Multiplying"
+        when '4'
+          "Dividing"
+        end
+  word
 end
 
-prompt("Welcome to Club Calculator! Wassa name, my friend?")
+prompt(MESSAGES['welcome'])
 # Kernel.puts("Welcome to the Club Calculator!")
 
 name = ''
@@ -41,7 +48,7 @@ loop do
   name = Kernel.gets.chomp()
 
   if name.empty?()
-    prompt("I gots to know your name.")
+    prompt(MESSAGES['valid_name'])
   else
     break
   end
@@ -51,26 +58,24 @@ loop do # main loop
   number1 = '' # initialize variable, number1, outsdide of this loop so that it
   # is accessible in the case statement.
   loop do
-    prompt("What's the first number, #{name}?")
+    prompt(MESSAGES['number1'])
     number1 = Kernel.gets().chomp()
 
-    if valid_number(number1)
+    if float?(number1)
       break
     else
-      prompt("Hmmm...that's not a valid number, guy. Check it; try a number,
-        not letter.")
+      prompt(MESSAGES['valid_number'])
     end
   end
 
   number2 = ''
   loop do
-    prompt("What's the second number, #{name}?")
+    prompt(MESSAGES['number2'])
     number2 = Kernel.gets().chomp()
-    if valid_number(number2)
+    if float?(number2)
       break
     else
-      prompt("Hmmm...that's not a valid number, guy. Check it; try a number,
-        not letter.")
+      prompt(MESSAGES['valid_number'])
     end
   end
 
@@ -94,7 +99,7 @@ loop do # main loop
     if %w(1 2 3 4).include?(operator)
       break
     else
-      prompt("Need to choose 1, 2, 3, or 4, #{name}. Please and thank you.")
+      prompt(MESSAGES['valid_operator'])
     end
   end
 
@@ -113,14 +118,13 @@ loop do # main loop
 
   prompt("The result is #{result}")
 
-  prompt("Do you want to perform another calculation? Type 'y' for yes.")
+  prompt(MESSAGES['another_calculation'])
   answer = gets.chomp
   break unless answer.downcase().start_with?('y') # stat_with? is a method all
-  # strings have in Ruby.
+  # strings have in Ruby language.
 end
 
-prompt("Thank you for using the calculator, #{name}, ma dood! Happy happies for
-  you today!")
+prompt(MESSAGES['goodbye'])
 
 ### instead of case statement
 # if operator == '1'
