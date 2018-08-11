@@ -11,7 +11,6 @@ MESSAGES = YAML.load_file('calculator_messages.yml')
 # perform the operation on the two numbers
 # output the result
 
-
 # create a method for prompting the user, so it is clear for the user/reader.
 
  def prompt(message)
@@ -103,7 +102,7 @@ loop do # main loop
     end
   end
 
-  prompt("#{operation_confirmation(operator)} the two numbers.")
+  prompt("#{operation_confirmation(operator)} the two numbers...")
 
   result = case operator
            when '1'
