@@ -102,7 +102,7 @@ loop do # main loop
     end
   end
 
-  prompt("#{operation_confirmation(operator)} the two numbers...")
+  prompt("#{operation_confirmation(operator)} the two numbers.. .")
 
   result = case operator
            when '1'

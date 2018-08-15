@@ -13,7 +13,7 @@ MESSAGES = YAML.load_file('car_loan_messages.yml')
   # monthly interest rate
   # loan duration months
 
-#####################################
+  #####################################
 
   # ask user for the loan amount requested
   # validate input as integer
@@ -26,7 +26,7 @@ MESSAGES = YAML.load_file('car_loan_messages.yml')
   # output monthly payment
   # ask if user wants to calculate again
 
-#######################################
+  #######################################
 
 def prompt(message)
   puts("=> #{message}")
@@ -75,7 +75,7 @@ loop do # main loop
     end
   end
 
-  puts
+puts
 
   interest_rate = ''
   loop do
@@ -89,7 +89,7 @@ loop do # main loop
     end
   end
 
-  puts
+puts
   # loan duration:
 
   loan_duration = ''
@@ -104,15 +104,14 @@ loop do # main loop
     end
   end
 
-  puts
+puts
   # calculation:
 
   annual_interest_rate = interest_rate.to_f() / 100
   monthly_interest_rate = annual_interest_rate / 12
   months = loan_duration.to_i * 12
-  monthly_repayment = loan_amount.to_f() *
-  (monthly_interest_rate / (1 - (1 + monthly_interest_rate) **
-  (- months.to_i)))
+  monthly_repayment = loan_amount.to_f()*(monthly_interest_rate
+  /(1 - (1 + monthly_interest_rate)**- months.to_i))
 
   prompt("Your monthly payment is $#{format('%02.2f', monthly_repayment)}")
 
@@ -124,8 +123,8 @@ loop do # main loop
   prompt(MESSAGES['calculate_again'])
 end
 
-  puts
-  prompt(MESSAGES['goodbye'])
+puts
+prompt(MESSAGES['goodbye'])
 
 puts
 puts
