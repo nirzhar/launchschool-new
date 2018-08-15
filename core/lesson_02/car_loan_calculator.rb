@@ -4,27 +4,27 @@ LANGUAGE = 'en'
 
 require 'yaml'
 MESSAGES = YAML.load_file('car_loan_messages.yml')
-# You'll need these three pieces of information:
+  # You'll need these three pieces of information:
   # the loan amount
   # the APR
   # the loan duration
 
-# calculate:
+  # calculate:
   # monthly interest rate
   # loan duration months
 
 #####################################
 
-# ask user for the loan amount requested
+  # ask user for the loan amount requested
   # validate input as integer
-# ask user for the APR
+  # ask user for the APR
   # validate input as float
-# ask user for the length of the loan duration in years
+  # ask user for the length of the loan duration in years
   # validate input as integer
-# calculate monthly interest rate
-# calculate loan duration in months
-# output monthly payment
-# ask if user wants to calculate again
+  # calculate monthly interest rate
+  # calculate loan duration in months
+  # output monthly payment
+  # ask if user wants to calculate again
 
 #######################################
 
@@ -63,7 +63,6 @@ end
 puts
 
 loop do # main loop
-
   loan_amount = ''
   loop do
     prompt("How much money do you need, #{name}?")
@@ -108,7 +107,7 @@ loop do # main loop
   puts
   # calculation:
 
-  annual_interest_rate = interest_rate.to_f()/100
+  annual_interest_rate = interest_rate.to_f() / 100
   monthly_interest_rate = annual_interest_rate / 12
   months = loan_duration.to_i * 12
   monthly_repayment = loan_amount.to_f() *
@@ -122,7 +121,7 @@ loop do # main loop
 
   calculate_again = gets.chomp
   break unless calculate_again == 'y' || calculate_again == 'Y'
-    prompt(MESSAGES['calculate_again'])
+  prompt(MESSAGES['calculate_again'])
 end
 
   puts
