@@ -4,29 +4,29 @@ LANGUAGE = 'en'
 
 require 'yaml'
 MESSAGES = YAML.load_file('car_loan_messages.yml')
-  # You'll need these three pieces of information:
-  # the loan amount
-  # the APR
-  # the loan duration
+# You'll need these three pieces of information:
+# the loan amount
+# the APR
+# the loan duration
 
-  # calculate:
-  # monthly interest rate
-  # loan duration months
+# calculate:
+# monthly interest rate
+# loan duration months
 
-  #####################################
+#####################################
 
-  # ask user for the loan amount requested
-  # validate input as integer
-  # ask user for the APR
-  # validate input as float
-  # ask user for the length of the loan duration in years
-  # validate input as integer
-  # calculate monthly interest rate
-  # calculate loan duration in months
-  # output monthly payment
-  # ask if user wants to calculate again
+# ask user for the loan amount requested
+# validate input as integer
+# ask user for the APR
+# validate input as float
+# ask user for the length of the loan duration in years
+# validate input as integer
+# calculate monthly interest rate
+# calculate loan duration in months
+# output monthly payment
+# ask if user wants to calculate again
 
-  #######################################
+#######################################
 
 def prompt(message)
   puts("=> #{message}")
@@ -75,7 +75,7 @@ loop do # main loop
     end
   end
 
-puts
+  puts
 
   interest_rate = ''
   loop do
@@ -89,7 +89,7 @@ puts
     end
   end
 
-puts
+  puts
   # loan duration:
 
   loan_duration = ''
@@ -103,15 +103,15 @@ puts
       prompt(MESSAGES['valid_number'])
     end
   end
-
-puts
+  puts
   # calculation:
 
   annual_interest_rate = interest_rate.to_f() / 100
   monthly_interest_rate = annual_interest_rate / 12
   months = loan_duration.to_i * 12
-  monthly_repayment = loan_amount.to_f()*(monthly_interest_rate
-  /(1 - (1 + monthly_interest_rate)**- months.to_i))
+  monthly_repayment = loan_amount.to_f() *
+                      (monthly_interest_rate /
+                        (1 - (1 + monthly_interest_rate)**- months.to_i))
 
   prompt("Your monthly payment is $#{format('%02.2f', monthly_repayment)}")
 
