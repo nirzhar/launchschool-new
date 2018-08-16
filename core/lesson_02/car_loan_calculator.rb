@@ -110,7 +110,7 @@ loop do # main loop
   monthly_interest_rate = annual_interest_rate / 12
   months = loan_duration.to_i * 12
   monthly_repayment = loan_amount.to_f() *
-                      (monthly_interest_rate /
+                      (monthly_interest_rate/
                         (1 - (1 + monthly_interest_rate)**- months.to_i))
 
   prompt("Your monthly payment is $#{format('%02.2f', monthly_repayment)}")
