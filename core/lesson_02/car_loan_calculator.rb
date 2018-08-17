@@ -33,11 +33,11 @@ def prompt(message)
 end
 
 def check_name(input)
-  input.scan(/\D/).empty?
+  input.scan(/^[a-zA-Z]+$/).empty?
 end
 
 def valid_number(input)
-  /\d/.match(input) && /^\d*\.?\d*$/.match(input)
+  /[1-9]/.match(input) && /^[1-9]*\.?[1-9]*$/.match(input)
 end
 
 puts
@@ -48,7 +48,7 @@ puts
 puts "................................................."
 puts
 
-prompt("What's your name?")
+prompt(MESSAGES['name'])
 
 name = ''
 loop do
@@ -90,7 +90,6 @@ loop do # main loop
   end
 
   puts
-  # loan duration:
 
   loan_duration = ''
 
@@ -104,13 +103,12 @@ loop do # main loop
     end
   end
   puts
-  # calculation:
 
   annual_interest_rate = interest_rate.to_f() / 100
   monthly_interest_rate = annual_interest_rate / 12
   months = loan_duration.to_i * 12
   monthly_repayment = loan_amount.to_f() *
-                      (monthly_interest_rate/
+                      (monthly_interest_rate /
                         (1 - (1 + monthly_interest_rate)**- months.to_i))
 
   prompt("Your monthly payment is $#{format('%02.2f', monthly_repayment)}")
