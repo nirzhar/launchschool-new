@@ -37,7 +37,7 @@ def check_name(input)
 end
 
 def valid_number(input)
-  /[1-9]/.match(input) && /^[1-9]*\.?[1-9]*$/.match(input)
+  /[0-9]/.match(input) && /^[0-9]*\.?[0-9]*$/.match(input)
 end
 
 puts
