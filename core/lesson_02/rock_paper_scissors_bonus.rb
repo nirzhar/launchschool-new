@@ -1,6 +1,6 @@
 # rock paper scissors 082118
 
-WINNING_CHOICES = {
+CHOICES = {
   "Rock" => %w(scissors lizard),
   "Paper" => %w(rock Spock),
   "Scissors" => %w(paper lizard),
@@ -32,31 +32,30 @@ def choice(str)
   choice
 end
 
-def win?(first_choice, second_choice)
-  WINNING_CHOICES[first_choice].include?(second_choice)
+def win?(first, second)
+  (first == 'rock' && second == 'scissors') ||
+    (first == 'paper' && second == 'rock') ||
+    (first == 'scissors' && second == 'paper') ||
+    (first == 'lizard' && second == 'Spock') ||
+    (first == 'Spock' && second == 'scissors')
 end
 
-def winner(player, computer)
-  if win?(player, computer)
-    prompt("You win!")
-  elsif win?(computer, player)
-    prompt("Computer wins!")
-  else
-    prompt("It's a tie!")
-  end
+def clear_screen
+  system('clear') || system('cls')
 end
 
 player_score = 0
 computer_score = 0
 
 # ........................................
-puts
+
+clear_screen
 loop do
   prompt("Welcome to The Rock, Paper, Scissors, Game!")
   prompt("First player to win 5 games is the winner.")
   prompt("...........................................")
 
-  puts
+  puts ''
 
   prompt("What's your first name?")
 
@@ -70,64 +69,65 @@ loop do
     end
   end
 
-  prompt("Enter your choice, #{name}")
-
   loop do
-    player_choice = ''
+    prompt("Enter your choice, #{name}")
+
     loop do
-      puts
-      prompt("Choose one: #{WINNING_CHOICES.keys.join(', ')}")
-      prompt("Enter 'r' for rock, 'p' for paper, 's' for scissors,
-        'l' for lizzard, 'k' for spock.")
-      player_choice = choice(gets.chomp)
-      if WINNING_CHOICES.include?(player_choice)
-        break
+      player_choice = ''
+      loop do
+        puts ''
+        prompt("Enter 'r' for rock, 'p' for paper, 's' for scissors,
+          'l' for lizzard, 'k' for spock.")
+        player_choice = choice(gets.chomp)
+        if CHOICES.include?(player_choice)
+          break
+        else
+          prompt("That's not a valid choice.")
+        end
+      end
+
+      puts ''
+      computer_choice = CHOICES.keys.sample
+      prompt("#{name}: #{player_choice} || Computer: #{computer_choice}")
+
+      if player_choice == computer_choice
+        prompt("It's a tie. No points for this round.")
+        puts ''
+      elsif CHOICES.fetch(player_choice).include?(computer_choice) == true
+        prompt("You win this round!")
+        puts ''
+        player_score += 1
+        prompt("Score:: #{name}: #{player_score} || Computer: #{computer_score}")
       else
-        prompt("That's not a valid choice.")
+        prompt("The computer won this round!")
+        puts ''
+        computer_score += 1
+        prompt("Score:: #{name}: #{player_score} || Computer: #{computer_score}")
+      end
+
+      if player_score == 5
+        prompt("You won the match!")
+        break
+      elsif computer_score == 5
+        prompt("The computer won the match!")
+        break
       end
     end
 
-    puts
-    computer_choice = WINNING_CHOICES.keys.sample
-    prompt("You: #{player_choice} || Computer: #{computer_choice}")
+    puts ''
 
-    if player_choice == computer_choice
-      prompt("It's a tie. No points for this round.")
-      puts
-    elsif WINNING_CHOICES.fetch(player_choice).include?(computer_choice) == true
-      prompt("You win this round!")
-      puts
-      player_score += 1
-      prompt("Score:: You: #{player_score} || Computer: #{computer_score}")
+    prompt("Would you like to play again? Enter 'y'for yes,
+      and any other key to exit.")
+    play_again = gets.chomp.downcase
+
+    if play_again == 'y'
+      puts "Ok. Let's do it!"
+      clear_screen
     else
-      prompt("The computer won this round!")
-      puts
-      computer_score += 1
-      prompt("Score:: You: #{player_score} || Computer: #{computer_score}")
+      puts ''
+      puts "Awesome! Thanks for playing!"
+      clear_screen
+      exit
     end
-
-    puts
-    if player_score == 5
-      prompt("You won the match!")
-      break
-    elsif computer_score == 5
-      prompt("The computer won the match!")
-      break
-    end
-  end
-  puts
-
-  prompt("Would you like to play again? Enter 'y'for yes,
-    and any other key to exit.")
-  play_again = gets.chomp.downcase
-
-  if play_again == 'y'
-    puts "Ok. Let's do it!"
-    puts
-  else
-    puts
-    puts "Awesome! Thanks for playing!"
-    puts
-    break
   end
 end
