@@ -1,0 +1,8 @@
+# rock_paper_scissors_bonus_messages
+name: "What's your first name?"
+valid_name: "We have to know your name, not a number."
+valid_input: "That's not a valid input. Enter (r)ock, (p)aper, (s)cissors, (k)ock, (l)izard."
+play_repeat: "Would you like to play again? Type 'y' or 'Y'
+  to cplay, or anything else to finish."
+play_again: "Ok! Let's do this!"
+goodbye: "Awesome! Thanks for playing "The Rock, Paper, Scissors, Lizard, Spock Game!"

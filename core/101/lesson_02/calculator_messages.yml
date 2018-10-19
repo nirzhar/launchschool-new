@@ -1,0 +1,13 @@
+# calculator_messages.yml
+
+
+welcome: "Welcome to Club Calculator! Wassa name, my friend?"
+valid_name: "I gots to know your name."
+number1: "What's the first number, my friend?"
+number2: "What's the second number?"
+valid_number: "Hmmm...that's not a valid number, guy. Check it; try a number,
+  not letter."
+valid_operator: "Need to choose 1, 2, 3, or 4. Please and thank you."
+another_calculation: "Do you want to perform another calculation? Type 'y' for yes."
+goodbye: "Thank you for using the calculator, ma friend! Happy happies for
+  you today!"

@@ -1,0 +1,10 @@
+# calculator_messages.yml
+
+
+welcome: "Welcome to The Rock Paper Scissors Game!"
+wrong_input: "That's not a valid choice."
+user_won: "Congratulations! You win!!"
+user_lost: "The computer won. Oh Well."
+draw: "It's a draw! Let's play again!"
+play_again: "Do you want to play again? Type 'y' for yes."
+goodbye: "Thank you for playing today! Have a nice rest of the day!"

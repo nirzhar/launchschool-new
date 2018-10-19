@@ -1,0 +1,11 @@
+# car_loan_messages.yml
+welcome: "Hi! Welcome to 'The Car Loan Calculator!'"
+name: "What's your first name?"
+valid_name: "We have to know your name, not a number."
+interest_rate: "What's the interest rate? Do 2 for 2% or 7.3 for 7.3%"
+loan_duration: "What's the loan duration in years?"
+valid_number: "Hmmm...that's not a valid number. Try a positive number, not negative numbers or symbols."
+another_calculation: "Would you like to make another calculation? Type 'y' or 'Y'
+  to calculate, or anything else to finish."
+calculate_again: "Ok! Let's do this!"
+goodbye: "Awesome! Thanks for playing with 'The Car Loan Calculator!'"
